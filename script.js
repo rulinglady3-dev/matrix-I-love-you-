@@ -1,11 +1,21 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 
+
 const text = "I love you";
+
+const fontSize = 22;
+
+const columnSpace = 140;
+
+const rowSpace = 55;
+
+
 
 let mode = "rain";
 
@@ -15,22 +25,31 @@ let words = [];
 
 let heartPoints = [];
 
+let angle = 0;
+
+
+
 let centerX;
 let centerY;
 
 
 
+// Kalp noktaları
+
 function createHeart(){
 
-    heartPoints=[];
+    heartPoints = [];
 
-    centerX = canvas.width/2;
-    centerY = canvas.height/2;
+    centerX = canvas.width / 2;
+    centerY = canvas.height / 2;
 
 
-    for(let t=0;t<Math.PI*2;t+=0.12){
+    for(let t=0; t<Math.PI*2; t+=0.12){
 
-        let x = 16*Math.pow(Math.sin(t),3);
+
+        let x =
+        16 * Math.pow(Math.sin(t),3);
+
 
         let y =
         -(13*Math.cos(t)
@@ -39,19 +58,23 @@ function createHeart(){
         -Math.cos(4*t));
 
 
+
         heartPoints.push({
 
-            x:centerX+x*15,
+            x:centerX + x*15,
 
-            y:centerY+y*15
+            y:centerY + y*15
 
         });
+
 
     }
 
 }
 
 
+
+// Yazı nesnesi
 
 class Word{
 
@@ -64,19 +87,20 @@ class Word{
         this.y=y;
 
 
-        this.speed=4+Math.random()*5;
+        this.startX=x;
+
+        this.startY=y;
 
 
         this.target=null;
 
 
-        this.angle=Math.random()*Math.PI*2;
-
-
-        this.radius=230+Math.random()*80;
+        this.speed =
+        3 + Math.random()*5;
 
 
     }
+
 
 
 
@@ -86,16 +110,18 @@ class Word{
         if(mode==="rain"){
 
 
-            this.y+=this.speed;
+            this.y += this.speed;
 
 
-            if(this.y>canvas.height+40){
+            if(this.y > canvas.height+40){
 
                 this.y=-40;
 
             }
 
+
         }
+
 
 
 
@@ -106,11 +132,11 @@ class Word{
 
 
                 this.x +=
-                (this.target.x-this.x)*0.035;
+                (this.target.x-this.x)*0.04;
 
 
                 this.y +=
-                (this.target.y-this.y)*0.035;
+                (this.target.y-this.y)*0.04;
 
 
             }
@@ -120,23 +146,37 @@ class Word{
 
 
 
-        else if(mode==="orbit"){
+
+        else if(mode==="rotate"){
 
 
-            this.angle+=0.01;
+            let dx =
+            this.target.x-centerX;
 
 
-            this.x =
-            centerX+
-            Math.cos(this.angle)*this.radius;
+            let dy =
+            this.target.y-centerY;
 
 
-            this.y =
-            centerY+
-            Math.sin(this.angle)*this.radius;
+
+            let rx =
+            dx*Math.cos(angle)
+            -dy*Math.sin(angle);
+
+
+            let ry =
+            dx*Math.sin(angle)
+            +dy*Math.cos(angle);
+
+
+
+            this.x=centerX+rx;
+
+            this.y=centerY+ry;
 
 
         }
+
 
 
     }
@@ -147,9 +187,13 @@ class Word{
     draw(){
 
 
-        ctx.font="bold 22px Arial";
+        ctx.font =
+        `bold ${fontSize}px Arial`;
 
-        ctx.fillStyle="#ff69b4";
+
+        ctx.fillStyle =
+        "#ff69b4";
+
 
 
         ctx.fillText(
@@ -166,18 +210,18 @@ class Word{
 
 
 
+// İlk Matrix düzeni
 
-
-function createWords(){
+function createRain(){
 
 
     words=[];
 
 
-    for(let x=0;x<canvas.width;x+=140){
+    for(let x=0;x<canvas.width;x+=columnSpace){
 
 
-        for(let y=0;y<canvas.height;y+=60){
+        for(let y=-300;y<canvas.height;y+=rowSpace){
 
 
             words.push(
@@ -199,16 +243,19 @@ function createWords(){
 
 createHeart();
 
-createWords();
+createRain();
 
 
 
 
+// Animasyon
 
 function animate(){
 
 
+
     ctx.fillStyle="black";
+
 
     ctx.fillRect(
         0,
@@ -219,10 +266,11 @@ function animate(){
 
 
 
+
     words.forEach((word,index)=>{
 
 
-        if(mode==="forming"){
+        if(mode==="forming" || mode==="rotate"){
 
 
             word.target =
@@ -237,7 +285,21 @@ function animate(){
         word.draw();
 
 
+
     });
+
+
+
+
+    if(mode==="rotate"){
+
+
+        angle +=0.005;
+
+
+    }
+
+
 
 
 
@@ -271,13 +333,13 @@ function animate(){
 }
 
 
+
 animate();
 
 
 
 
-
-// 7 saniye sonra kalp oluşumu
+// 7 saniye sonra kalp
 
 setTimeout(()=>{
 
@@ -290,17 +352,15 @@ setTimeout(()=>{
 
 
 
-
-// kalp oluştuktan sonra dönüş
+// kalp tamamlanınca dönme
 
 setTimeout(()=>{
 
 
-    mode="orbit";
+    mode="rotate";
 
 
-},12000);
-
+},13000);
 
 
 
@@ -319,7 +379,6 @@ setTimeout(()=>{
 
 
 
-
 window.addEventListener("resize",()=>{
 
 
@@ -329,5 +388,6 @@ window.addEventListener("resize",()=>{
 
 
     createHeart();
+
 
 });
