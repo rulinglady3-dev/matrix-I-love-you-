@@ -51,7 +51,7 @@ class LoveStream{
 
         // hepsi hızlı ama farklı
 
-        this.speed = 15 + Math.random()*15;
+        this.speed = 8 + Math.random()*8;
 
 
 
