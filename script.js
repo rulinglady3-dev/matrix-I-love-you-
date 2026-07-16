@@ -53,7 +53,7 @@ class Column {
 
         ctx.font = `bold ${fontSize}px Arial`;
 
-        ctx.fillStyle = "pink";
+        ctx.fillStyle = "#ff69b4";
 
 
         for(let row = -1; row < Math.ceil(canvas.height / rowGap)+2; row++){
@@ -109,7 +109,7 @@ createColumns();
 function animate(){
 
 
-    ctx.fillStyle = "rgba(0,0,0,0.25)";
+    ctx.fillStyle = "black";
 
     ctx.fillRect(
         0,
