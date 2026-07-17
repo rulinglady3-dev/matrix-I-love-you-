@@ -47,7 +47,7 @@ function createHeart(){
         let scale = Math.min(
     canvas.width,
     canvas.height
-) / 30;
+) / 38;
 
 
 heartPoints.push({
