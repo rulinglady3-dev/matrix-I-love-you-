@@ -470,18 +470,15 @@ document.getElementById("yesBtn");
 const noBtn=
 document.getElementById("noBtn");
 
-
-
-
-
 function startGame(){
 
+    questionIndex = 0;
 
-gameScreen.style.display="flex";
+    gameScreen.style.display="flex";
 
+    nextScreen.style.display="none";
 
-showQuestion();
-
+    showQuestion();
 
 }
 
