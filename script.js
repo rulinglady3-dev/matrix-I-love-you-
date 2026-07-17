@@ -372,3 +372,239 @@ window.addEventListener("resize",()=>{
     createHeart();
 
 });
+
+const questions=[
+
+
+{
+text:"Did I make you smile today? 😊",
+gif:"images/smile.gif",
+yesGif:"images/smile_yes.gif",
+message:"I hope I made you smile 💗",
+noType:"jump"
+
+},
+
+
+{
+text:"Do you want to hug me? 🤍",
+gif:"images/hug.gif",
+yesGif:"images/hug_yes.gif",
+message:"A warm hug would be nice ✨",
+noType:"run"
+
+},
+
+
+{
+text:"Will you kiss me? 💗",
+gif:"images/kiss.gif",
+yesGif:"images/kiss_yes.gif",
+message:"That made me happy ❤️",
+noType:"teleport"
+
+},
+
+
+{
+text:"Do you want to spend more time with me? ✨",
+gif:"images/time.gif",
+yesGif:"images/time_yes.gif",
+message:"Then click the next site I sent you 💌",
+noType:"crazy"
+
+}
+
+
+];
+
+
+
+let questionIndex=0;
+
+
+
+const gameScreen=
+document.getElementById("gameScreen");
+
+
+const nextScreen=
+document.getElementById("nextScreen");
+
+
+const questionText=
+document.getElementById("questionText");
+
+
+const gameGif=
+document.getElementById("gameGif");
+
+
+const gifMessage=
+document.getElementById("gifMessage");
+
+
+const yesBtn=
+document.getElementById("yesBtn");
+
+
+const noBtn=
+document.getElementById("noBtn");
+
+
+
+
+
+function startGame(){
+
+
+gameScreen.style.display="flex";
+
+
+showQuestion();
+
+
+}
+
+
+
+
+function showQuestion(){
+
+
+let q=questions[questionIndex];
+
+
+questionText.textContent=q.text;
+
+
+gameGif.src=q.gif;
+
+
+gifMessage.textContent="";
+
+
+noBtn.style.left="auto";
+
+noBtn.style.top="auto";
+
+
+}
+
+
+
+yesBtn.onclick=function(){
+
+
+let q=questions[questionIndex];
+
+
+gameGif.src=q.yesGif;
+
+
+gifMessage.textContent=q.message;
+
+
+
+setTimeout(()=>{
+
+
+questionIndex++;
+
+
+if(questionIndex < questions.length){
+
+
+showQuestion();
+
+
+}
+
+else{
+
+
+gameScreen.style.display="none";
+
+
+nextScreen.style.display="flex";
+
+
+}
+
+
+
+},2500);
+
+
+
+};
+
+
+
+
+
+noBtn.onmouseenter=function(){
+
+
+let q=questions[questionIndex];
+
+
+if(q.noType==="jump"){
+
+
+noBtn.style.top=
+Math.random()*200+"px";
+
+
+}
+
+
+if(q.noType==="run"){
+
+
+noBtn.style.left=
+Math.random()*80+"%";
+
+
+noBtn.style.top=
+Math.random()*80+"%";
+
+
+}
+
+
+if(q.noType==="teleport"){
+
+
+noBtn.style.left=
+Math.random()*window.innerWidth+"px";
+
+
+noBtn.style.top=
+Math.random()*window.innerHeight+"px";
+
+
+}
+
+
+if(q.noType==="crazy"){
+
+
+noBtn.style.transform=
+"rotate("+
+Math.random()*360+
+"deg)";
+
+
+noBtn.style.left=
+Math.random()*90+"%";
+
+
+noBtn.style.top=
+Math.random()*90+"%";
+
+
+}
+
+
+};
