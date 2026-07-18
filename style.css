@@ -39,13 +39,26 @@ canvas{
 
     align-items:center;
 
-    background:black;
+    background-image:url("images/background.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 
-    color:white;
-
-    text-align:center;
+    overflow:hidden;
 
     z-index:20;
+
+}
+
+#gameScreen::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.30);
 
 }
 
@@ -55,8 +68,11 @@ canvas{
 
     max-width:900px;
 
-}
+    position:relative;
 
+    z-index:2;
+
+}
 
 
 #questionText{
