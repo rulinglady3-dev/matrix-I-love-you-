@@ -381,35 +381,47 @@ window.addEventListener("resize",()=>{
 const questions=[
 
 {
-text:"Did I make you smile today? ",
+text:"Did I make you smile today?",
 
 gif:"images/smile.gif",
 
 yesGif:"images/smile_yes.gif",
 
-message:"I hope I made you smile 💗",
+message:"I hope I made you smile",
 
-noType:"jump"
+noType:"jump",
+
+noMessages:[
+"YU,Are you sure?",
+"why did you click no huhh...",
+"Don't press No pleasee,LOVE MEEE"
+]
 
 },
 
 
 {
-text:"Do you want to hug me?",
+text:"Do you want to hug me? 🤍",
 
 gif:"images/hug.gif",
 
 yesGif:"images/hug_yes.gif",
 
-message:"A warm hug would be nice ✨",
+message:"A warm hug would be nice",
 
-noType:"run"
+noType:"run",
+
+noMessages:[
+"Really? No hug?",
+"This button is running away too",
+"Maybe a little hug? HUGG MEE"
+]
 
 },
 
 
 {
-text:"Will you kiss me?",
+text:"Will you kiss me? 💗",
 
 gif:"images/kiss.gif",
 
@@ -417,13 +429,19 @@ yesGif:"images/kiss_yes.gif",
 
 message:"That made me happy",
 
-noType:"teleport"
+noType:"teleport",
+
+noMessages:[
+"Are you sure? WHYY YUUU",
+"The No button is shy noww",
+"Maybe try again pleasee, KİSS MEEE"
+]
 
 },
 
 
 {
-text:"Do you want to spend more time with me? ✨",
+text:"Do you want to spend more time with me?",
 
 gif:"images/time.gif",
 
@@ -431,13 +449,17 @@ yesGif:"images/time_yes.gif",
 
 message:"Then click the next site I sent you 💌",
 
-noType:"crazy"
+noType:"crazy",
+
+noMessages:[
+"Don't leave yet,Stay with me ",
+"One more moment?",
+"The story isn't finished"
+]
 
 }
 
 ];
-
-
 
 let questionIndex=0;
 
@@ -558,26 +580,18 @@ yesBtn.onclick=function(){
 noBtn.onclick=function(){
 
 
-let reactions=[
-
-"Are you sure? 🥺",
-
-"Try again 💗",
-
-"That button is a little shy 😄",
-
-"Maybe choose Yes? ✨"
-
-];
+let q = questions[questionIndex];
 
 
 let random =
-Math.floor(Math.random()*reactions.length);
+Math.floor(
+Math.random()*q.noMessages.length
+);
 
 
 
 noReaction.textContent =
-reactions[random];
+q.noMessages[random];
 
 
 noReaction.style.opacity="1";
@@ -586,9 +600,7 @@ noReaction.style.opacity="1";
 
 setTimeout(()=>{
 
-
 noReaction.style.opacity="0";
-
 
 },2000);
 
