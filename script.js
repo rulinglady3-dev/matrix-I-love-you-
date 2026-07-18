@@ -547,7 +547,7 @@ yesBtn.onclick=function(){
 
 
 
-    },3000);
+    },5000);
 
 
 
