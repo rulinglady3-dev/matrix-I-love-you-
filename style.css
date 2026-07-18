@@ -49,10 +49,11 @@ canvas{
 
 }
 
-
 #questionBox{
 
-    width:80%;
+    width:90%;
+
+    max-width:900px;
 
 }
 
@@ -62,7 +63,7 @@ canvas{
 
     font-family:Georgia;
 
-    font-size:40px;
+    font-size:50px;
 
     color:#ff69b4;
 
@@ -72,7 +73,7 @@ canvas{
 
 #gameGif{
 
-    width:220px;
+    width:300px;
 
     margin:25px;
 
@@ -84,8 +85,9 @@ canvas{
 
     color:#ffb6c1;
 
-    font-size:25px;
+    font-size:32px;
 
+    font-family:Georgia;
 }
 
 
