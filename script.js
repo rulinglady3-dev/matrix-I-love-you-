@@ -554,70 +554,85 @@ yesBtn.onclick=function(){
 };
 
 
-
-
 noBtn.onmouseenter=function(){
 
 
-let q=questions[questionIndex];
+let q = questions[questionIndex];
+
 
 
 if(q.noType==="jump"){
 
 
-noBtn.style.top=
-Math.random()*200+"px";
+    noBtn.style.transform =
+    "translateY(-40px)";
+
+
+    setTimeout(()=>{
+
+        noBtn.style.transform =
+        "translateY(0)";
+
+    },300);
 
 
 }
+
 
 
 if(q.noType==="run"){
 
 
-noBtn.style.left=
-Math.random()*80+"%";
+    noBtn.style.left =
+    Math.random()*70 + "%";
 
 
-noBtn.style.top=
-Math.random()*80+"%";
+    noBtn.style.top =
+    Math.random()*70 + "%";
 
 
 }
+
 
 
 if(q.noType==="teleport"){
 
 
-noBtn.style.left=
-Math.random()*window.innerWidth+"px";
+    noBtn.style.left =
+    Math.random() *
+    (window.innerWidth-150)
+    +"px";
 
 
-noBtn.style.top=
-Math.random()*window.innerHeight+"px";
+    noBtn.style.top =
+    Math.random() *
+    (window.innerHeight-80)
+    +"px";
 
 
 }
 
 
+
 if(q.noType==="crazy"){
 
 
-noBtn.style.transform=
-"rotate("+
-Math.random()*360+
-"deg)";
+    noBtn.style.left =
+    Math.random()*80+"%";
 
 
-noBtn.style.left=
-Math.random()*90+"%";
+    noBtn.style.top =
+    Math.random()*80+"%";
 
 
-noBtn.style.top=
-Math.random()*90+"%";
+    noBtn.style.transform =
+    "rotate("+
+    Math.random()*360+
+    "deg) scale(1.2)";
 
 
 }
 
 
 };
+
