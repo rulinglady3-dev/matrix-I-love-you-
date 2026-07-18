@@ -615,12 +615,17 @@ noBtn.onmouseenter=function(){
 let q = questions[questionIndex];
 
 
+let maxX = window.innerWidth - noBtn.offsetWidth - 50;
+
+let maxY = window.innerHeight - noBtn.offsetHeight - 50;
+
+
 
 if(q.noType==="jump"){
 
 
     noBtn.style.transform =
-    "translateY(-40px)";
+    "translateY(-30px)";
 
 
     setTimeout(()=>{
@@ -639,11 +644,11 @@ if(q.noType==="run"){
 
 
     noBtn.style.left =
-    Math.random()*70 + "%";
+    Math.random()*maxX+"px";
 
 
     noBtn.style.top =
-    Math.random()*70 + "%";
+    Math.random()*maxY+"px";
 
 
 }
@@ -654,15 +659,11 @@ if(q.noType==="teleport"){
 
 
     noBtn.style.left =
-    Math.random() *
-    (window.innerWidth-150)
-    +"px";
+    Math.random()*maxX+"px";
 
 
     noBtn.style.top =
-    Math.random() *
-    (window.innerHeight-80)
-    +"px";
+    Math.random()*maxY+"px";
 
 
 }
@@ -673,17 +674,17 @@ if(q.noType==="crazy"){
 
 
     noBtn.style.left =
-    Math.random()*80+"%";
+    Math.random()*maxX+"px";
 
 
     noBtn.style.top =
-    Math.random()*80+"%";
+    Math.random()*maxY+"px";
 
 
     noBtn.style.transform =
     "rotate("+
-    Math.random()*360+
-    "deg) scale(1.2)";
+    Math.random()*120+
+    "deg)";
 
 
 }
